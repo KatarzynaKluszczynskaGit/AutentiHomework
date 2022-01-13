@@ -1,0 +1,52 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Autenti",
+		"_postman_id": "d633b1b3-0849-6d71-bf94-e123b32adbd5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateDocumentWithViewerAndSigner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 201\"] = responseCode.code === 201;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{AutentiApiBaseUrl}}/api/v0.1/documents",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{secret}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"title\":\"Agreement\",\r\n   \"message\":\"Loan agreement for Johny Bravo\",\r\n   \"sender\":{\r\n      \"type\":\"SIGNER\"\r\n   },\r\n   \"viewers\":[\r\n      {\r\n         \"email\":\"autenti@mailsac.com\",\r\n         \"personalData\":{\r\n            \"givenName\":\"Katarzyna\",\r\n            \"surname\":\"Kluszczynska\"\r\n         },\r\n         \"organizationInfo\":{\r\n            \"name\":\"Company name\",\r\n            \"taxNumber\":\"3383862921\",\r\n            \"jobTitle\":\"CEO\"\r\n         }\r\n      }\r\n   ],\r\n   \"signers\":[\r\n      {\r\n         \"email\":\"katarzynaelzbieciak@gmail.com\",\r\n         \"signatureType\":\"ESIGNATURE\",\r\n         \"personalData\":{\r\n            \"givenName\":\"Katarzyna\",\r\n            \"surname\":\"Elżbieciak\"\r\n         },\r\n         \"organizationInfo\":{\r\n            \"name\":\"Example\",\r\n            \"taxNumber\":\"7593401789\",\r\n            \"jobTitle\":\"CEO\"\r\n         },\r\n         \"smsAuthorization\":{\r\n            \"phoneNumber\":\"530453255\"\r\n         }\r\n      }\r\n   ]\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
